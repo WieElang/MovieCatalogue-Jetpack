@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 import com.meatrix.moviecatalogue.R
 import com.meatrix.moviecatalogue.ui.adapter.MovieAdapter
@@ -23,20 +25,18 @@ class MovieFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_movie, container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        if (activity != null){
-            val viewModel = ViewModelProvider(this,ViewModelProvider.NewInstanceFactory())[MovieViewModel::class.java]
-            val movies = viewModel.getMovies()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val viewModel = ViewModelProvider(this,ViewModelProvider.NewInstanceFactory())[MovieViewModel::class.java]
+        val movies = viewModel.getMovies()
 
-            val movieAdapter = MovieAdapter()
-            movieAdapter.setList(movies)
+        val movieAdapter = MovieAdapter()
+        movieAdapter.setList(movies)
 
-            with(rv_movie){
-                layoutManager = GridLayoutManager(context,2)
-                setHasFixedSize(true)
-                adapter = movieAdapter
-            }
+        with(rv_movie){
+            layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+            setHasFixedSize(true)
+            adapter = movieAdapter
         }
     }
 }

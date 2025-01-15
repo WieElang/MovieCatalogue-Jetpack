@@ -3,6 +3,7 @@ package com.meatrix.moviecatalogue.utils
 import com.meatrix.moviecatalogue.data.MovieEntity
 import com.meatrix.moviecatalogue.data.TvShowEntity
 import com.meatrix.moviecatalogue.R
+import com.meatrix.moviecatalogue.data.AnimeEntity
 
 object StaticData {
     fun generateMovie() : List<MovieEntity> {
@@ -204,5 +205,31 @@ object StaticData {
             )
         )
         return tv
+    }
+
+    fun generateAnime() : List<AnimeEntity>{
+        val anime = ArrayList<AnimeEntity>()
+
+        anime.add(
+            AnimeEntity(
+                "1",
+                "Dragon Ball",
+                "1986",
+                "Long ago in the mountains, a fighting master known as Gohan discovered a strange boy whom he named Goku. Gohan raised him and trained Goku in martial arts until he died. The young and very strong boy was on his own, but easily managed. Then one day, Goku met a teenage girl named Bulma, whose search for the dragon balls brought her to Goku home. Together, they set off to find all seven dragon balls in an adventure.",
+                R.drawable.dragonball
+            )
+        )
+
+        anime.add(
+            AnimeEntity(
+                "2",
+                "Fairy Tail",
+                "2009",
+                "Lucy is a 17-year-old girl, who wants to be a full-fledged mage. One day when visiting Harujion Town, she meets Natsu, a young man who gets sick easily by any type of transportation. But Natsu isnt just any ordinary kid, he is a member of one of the worlds most infamous mage guilds: Fairy Tail.",
+                R.drawable.fairytail
+            )
+        )
+
+        return anime
     }
 }

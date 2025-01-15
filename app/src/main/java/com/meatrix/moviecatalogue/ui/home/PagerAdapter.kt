@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.meatrix.moviecatalogue.R
+import com.meatrix.moviecatalogue.ui.anime.AnimeFragment
 import com.meatrix.moviecatalogue.ui.movie.MovieFragment
 import com.meatrix.moviecatalogue.ui.tv_show.TvShowFragment
 
@@ -13,17 +14,18 @@ class PagerAdapter(private val context: Context, fm : FragmentManager) : Fragmen
 
     companion object{
         @StringRes
-        private val TAB_TITLE = intArrayOf(R.string.movie,R.string.tvShow)
+        private val TAB_TITLE = intArrayOf(R.string.movie,R.string.tvShow,R.string.anime)
     }
 
     override fun getItem(position: Int): Fragment =
         when (position){
             0 -> MovieFragment()
             1 -> TvShowFragment()
+            2 -> AnimeFragment()
             else -> Fragment()
         }
 
     override fun getPageTitle(position: Int): CharSequence? = context.resources.getString(TAB_TITLE[position])
 
-    override fun getCount(): Int = 2
+    override fun getCount(): Int = 3
 }
