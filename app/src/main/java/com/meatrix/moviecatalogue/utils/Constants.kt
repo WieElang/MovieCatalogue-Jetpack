@@ -4,6 +4,7 @@ object Constants {
 
     enum class TYPE(val value: Int) {
         MOVIE(1),
-        TV_SHOW(2)
+        TV_SHOW(2),
+        ANIME(3)
     }
 }

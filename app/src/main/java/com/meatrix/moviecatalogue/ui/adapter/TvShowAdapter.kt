@@ -29,11 +29,13 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
                 tv_title.text = tvShow.title
                 tv_release_date.text = tvShow.releaseDate
 
-                Glide.with(context)
-                    .load(tvShow.posterPath)
-                    .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
-                    .error(R.drawable.ic_error)
-                    .into(home_poster)
+                context?.let { safeContext ->
+                    Glide.with(safeContext)
+                        .load(tvShow.posterPath)
+                        .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
+                        .error(R.drawable.ic_error)
+                        .into(home_poster)
+                }
             }
         }
 

@@ -1,6 +1,7 @@
 package com.meatrix.moviecatalogue.ui.detail
 
 import androidx.lifecycle.ViewModel
+import com.meatrix.moviecatalogue.data.AnimeEntity
 import com.meatrix.moviecatalogue.data.MovieEntity
 import com.meatrix.moviecatalogue.data.TvShowEntity
 import com.meatrix.moviecatalogue.utils.StaticData
@@ -26,6 +27,17 @@ class DetailViewModel : ViewModel() {
     fun getTvShow() : TvShowEntity {
         lateinit var extra: TvShowEntity
         val entities = StaticData.generateTv()
+        for (entity in entities) {
+            if (entity.id == extraId) {
+                extra = entity
+            }
+        }
+        return extra
+    }
+
+    fun getAnime() : AnimeEntity {
+        lateinit var extra: AnimeEntity
+        val entities = StaticData.generateAnime()
         for (entity in entities) {
             if (entity.id == extraId) {
                 extra = entity

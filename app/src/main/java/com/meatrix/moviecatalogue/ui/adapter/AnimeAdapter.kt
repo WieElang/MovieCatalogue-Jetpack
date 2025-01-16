@@ -31,17 +31,19 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ViewHolder>() {
                 tv_title.text = anime.title
                 tv_release_date.text = anime.releaseDate
 
-                Glide.with(context)
-                    .load(anime.posterPath)
-                    .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
-                    .error(R.drawable.ic_error)
-                    .into(home_poster)
+                context?.let { safeContext ->
+                    Glide.with(safeContext)
+                        .load(anime.posterPath)
+                        .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
+                        .error(R.drawable.ic_error)
+                        .into(home_poster)
+                }
             }
         }
 
         init {
             itemView.setOnClickListener {
-                DetailActivity.newInstance(it.context, anime.id, Constants.TYPE.TV_SHOW)
+                DetailActivity.newInstance(it.context, anime.id, Constants.TYPE.ANIME)
             }
         }
 
