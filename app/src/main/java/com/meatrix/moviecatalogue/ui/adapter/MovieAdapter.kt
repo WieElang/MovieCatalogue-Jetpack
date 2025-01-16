@@ -29,11 +29,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
                 tv_title.text = movie.title
                 tv_release_date.text = movie.releaseDate
 
-                Glide.with(context)
-                    .load(movie.posterPath)
-                    .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
-                    .error(R.drawable.ic_error)
-                    .into(home_poster)
+                context?.let { safeContext ->
+                    Glide.with(safeContext)
+                        .load(movie.posterPath)
+                        .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
+                        .error(R.drawable.ic_error)
+                        .into(home_poster)
+                }
             }
         }
 

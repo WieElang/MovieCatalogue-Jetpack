@@ -11,7 +11,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val pagerAdapter = PagerAdapter(this,supportFragmentManager)
+        val pagerAdapter = PagerAdapter(supportFragmentManager, lifecycle)
         viewPager.adapter = pagerAdapter
         tabs.setupWithViewPager(viewPager)
 

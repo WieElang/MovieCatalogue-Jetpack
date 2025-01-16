@@ -60,6 +60,13 @@ class DetailActivity : AppCompatActivity() {
                         overview = viewModel.getTvShow().overview
                         posterPath = viewModel.getTvShow().posterPath
                     }
+                    Constants.TYPE.ANIME.value -> {
+                        viewModel.selectedId(extraId)
+                        title = viewModel.getAnime().title
+                        date = viewModel.getAnime().releaseDate
+                        overview = viewModel.getAnime().overview
+                        posterPath = viewModel.getAnime().posterPath
+                    }
                 }
             }
         }
